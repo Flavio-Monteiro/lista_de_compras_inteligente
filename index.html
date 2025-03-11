@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras Inteligente</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Na seção head do index.html -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>🛒 Lista de Compras Inteligente</h2>
+        
+        <div class="input-group">
+            <input type="text" id="product" placeholder="Produto">
+            <input type="number" id="price" placeholder="Preço" step="0.01" min="0">
+            <input type="number" id="quantity" placeholder="Quantidade" min="1">
+            <button class="btn-primary" onclick="addItem()">➕ Adicionar</button>
+        </div>
+
+        <div class="input-group">
+            <input type="number" id="budget" placeholder="Orçamento Total" step="0.01" min="0">
+            <button class="btn-primary" onclick="setBudget()">💵 Definir Orçamento</button>
+        </div>
+
+        <div class="table-container">
+            <table id="itemsTable">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Preço</th>
+                        <th>Qtd</th>
+                        <th>Total</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="total-box">
+            <div class="total-card">
+                <span>Total Geral:</span>
+                <div id="totalAmount" class="amount">R$ 0.00</div>
+            </div>
+            <div class="total-card">
+                <span>Orçamento:</span>
+                <div id="budgetAmount">-</div>
+            </div>
+            <div class="total-card">
+                <span>Saldo:</span>
+                <div id="balanceAmount">-</div>
+            </div>
+        </div>
+
+        <div class="input-group" style="justify-content: center; margin-top: 20px;">
+            <button class="btn-primary" onclick="exportPDF()">📄 Exportar PDF</button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+<!-- No head do index.html -->
+    <script src="script.js"></script>
+</body>
+</html>
